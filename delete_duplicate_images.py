@@ -1,22 +1,17 @@
 #finding duplicate images using dhashing
 
-import hashlib
+import hashlib, os
 from scipy.misc import imread, imresize, imshow
 import matplotlib.pyplot as plt
 import time
 import numpy as np
 
-def file_hash(filepath):
-    with open(filepath, 'rb') as f:
-        return md5(f.read()).hexdigest()
+files_list = os.listdir('images\\')
 
-import os
-files_list = os.listdir()
-
-import hashlib, os
 duplicates = []
 hash_keys = dict()
-for index, filename in  enumerate(os.listdir('.')):  #listdir('.') = current directory
+
+for index, filename in enumerate(os.listdir('.')):  #listdir('.') = current directory
     if os.path.isfile(filename):
         with open(filename, 'rb') as f:
             filehash = hashlib.md5(f.read()).hexdigest()
